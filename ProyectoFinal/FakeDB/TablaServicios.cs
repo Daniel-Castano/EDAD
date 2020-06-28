@@ -6,7 +6,7 @@ namespace FakeDB
 {
     class TablaServicios
     {
-        private static List<AtributosServicio> pacientes = new List<AtributosServicio>();
+        private static List<AtributosServicio> servicio = new List<AtributosServicio>();
 
         class AtributosServicio
         {
@@ -35,14 +35,14 @@ namespace FakeDB
         {
             for (int i = 0; i < cantidadServicios; i++)
             {
-                pacientes.Add(new AtributosServicio(i));
+                servicio.Add(new AtributosServicio(i));
 
             }
         }
 
         public static String ToJSON()
         {
-            if (pacientes.Count == 0)
+            if (servicio.Count == 0)
             {
                 InstanciarServiciosExistentes(10);
             }
@@ -51,7 +51,7 @@ namespace FakeDB
                 WriteIndented = true
             };
 
-            return System.Text.Json.JsonSerializer.Serialize(pacientes, options);
+            return System.Text.Json.JsonSerializer.Serialize(servicio, options);
         }
 
     }
