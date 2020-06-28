@@ -19,7 +19,7 @@ namespace Persistence
             IPaciente paciente = pacientes.FirstOrDefault(p => p.Cedula == idPaciente);
             if (paciente is null)
             {
-                throw new PacienteNoAfiliadoException("El Paciente con Id-->" + idPaciente + ", no esta registrado");
+                throw new PacienteNoAfiliadoException("El Paciente con Cédula-->" + idPaciente + ", no esta registrado");
             }
 
             return paciente;

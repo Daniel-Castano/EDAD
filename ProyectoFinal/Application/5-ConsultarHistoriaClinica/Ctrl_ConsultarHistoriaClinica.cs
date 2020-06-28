@@ -10,7 +10,7 @@ namespace Application._5_ConsultarHistoriaClinica
 {
     public class Ctrl_ConsultarHistoriaClinica
     {
-        public String getHistoriaClinica(String idPaciente)
+        public String solicitarHistoriaClinica(String idPaciente)
         {
             try
             {

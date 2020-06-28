@@ -4,17 +4,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using Application._5_ConsultarHistoriaClinica;
 using Domain.HistoriaClinica;
-using Domain.Usuario.Paciente;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
-namespace ServicesApp.Controllers
+namespace Services.Controllers
 {
+    [Route("api/[controller]")]
     [ApiController]
-    [Route("[controller]")]
-    public class HistoriaClinica : ControllerBase
+    public class HistoriasController : ControllerBase
     {
-
         [HttpGet("{id}")]
 
         public String Get(string id)
@@ -23,7 +21,7 @@ namespace ServicesApp.Controllers
 
             try
             {
-                return ctrlC.getHistoriaClinica(id);
+                return ctrlC.solicitarHistoriaClinica(id);
             }
             catch (HistoriaClinicaNoDisponibleException ex)
             {

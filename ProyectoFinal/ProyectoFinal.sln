@@ -13,9 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence", "Persistence\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FakeDB", "FakeDB\FakeDB.csproj", "{B874D623-DDCC-4EF2-BBF3-F2F93EEF7392}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServicesApp", "ServicesApp\ServicesApp.csproj", "{45FA653D-2E67-4B71-B391-4AE225D479FD}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{B3AFDA5A-7A20-40FF-8997-C95A24BEF94A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "Services\Services.csproj", "{B3AFDA5A-7A20-40FF-8997-C95A24BEF94A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,10 +41,6 @@ Global
 		{B874D623-DDCC-4EF2-BBF3-F2F93EEF7392}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B874D623-DDCC-4EF2-BBF3-F2F93EEF7392}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B874D623-DDCC-4EF2-BBF3-F2F93EEF7392}.Release|Any CPU.Build.0 = Release|Any CPU
-		{45FA653D-2E67-4B71-B391-4AE225D479FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{45FA653D-2E67-4B71-B391-4AE225D479FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{45FA653D-2E67-4B71-B391-4AE225D479FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{45FA653D-2E67-4B71-B391-4AE225D479FD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B3AFDA5A-7A20-40FF-8997-C95A24BEF94A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B3AFDA5A-7A20-40FF-8997-C95A24BEF94A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B3AFDA5A-7A20-40FF-8997-C95A24BEF94A}.Release|Any CPU.ActiveCfg = Release|Any CPU

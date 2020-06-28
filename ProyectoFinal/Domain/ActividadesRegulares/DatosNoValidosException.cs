@@ -6,5 +6,6 @@ namespace Domain.ActividadesRegulares
 {
     class DatosNoValidosException
     {
+
     }
 }

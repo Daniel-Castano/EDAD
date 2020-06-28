@@ -22,7 +22,7 @@ namespace FakeDB
             {
                 Random random = new Random();
 
-                Cedula = 1000 +id;
+                Cedula = 1000 +id; 
              
                 Nombre = "NombrePacienteEPS" + id;
                

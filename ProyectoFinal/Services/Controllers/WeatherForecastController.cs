@@ -21,7 +21,7 @@ namespace Services.Controllers
 
             try
             {
-                return ctrlC.getHistoriaClinica(id);
+                return ctrlC.solicitarHistoriaClinica(id);
             }
             catch (HistoriaClinicaNoDisponibleException ex)
             {
