@@ -32,9 +32,9 @@ namespace FakeDB
 
                 Direccion = "direcion pacienteEPS" + id;
 
-                Usuario = "nombre Usuario";
+                Usuario = "nombreUsuario";
 
-                Contraseña = "contraseña Usuario";
+                Contraseña = "contraseñaUsuario";
              
             }
 

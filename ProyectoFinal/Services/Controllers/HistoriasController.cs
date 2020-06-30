@@ -13,6 +13,19 @@ namespace Services.Controllers
     [ApiController]
     public class HistoriasController : ControllerBase
     {
+        [HttpGet]
+
+        public IEnumerable<HistoriaClinica> Get()
+        {
+            List<HistoriaClinica> historias;
+
+            String jsonString = FakeDB.TablaHistoriaClinica.ToJSON();
+            historias = System.Text.Json.JsonSerializer.Deserialize<List<HistoriaClinica>>(jsonString);
+
+            return historias.ToList();
+        }
+
+
         [HttpGet("{id}")]
 
         public String Get(string id)

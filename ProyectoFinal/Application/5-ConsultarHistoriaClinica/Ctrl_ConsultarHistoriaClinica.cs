@@ -15,7 +15,7 @@ namespace Application._5_ConsultarHistoriaClinica
             try
             {
                 if (idPaciente is null)
-                    return "{null}";
+                    return "{null}"; 
                 
                 IHistoriaClinica paciente = RepositorioHistoriasClinicas.GetPaciente(int.Parse(idPaciente));
                 return System.Text.Json.JsonSerializer.Serialize(paciente);
@@ -27,5 +27,6 @@ namespace Application._5_ConsultarHistoriaClinica
             }
             
         }
+
     }
 }

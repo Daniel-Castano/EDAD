@@ -4,11 +4,11 @@ using System.Text;
 
 namespace FakeDB
 {
-    class TablaServicios
+    public class TablaServicios
     {
         private static List<AtributosServicio> servicio = new List<AtributosServicio>();
 
-        class AtributosServicio
+        class AtributosServicio 
         {
             public int codigoServicio { get; set; }
             public string nombreServicio { get; set; }

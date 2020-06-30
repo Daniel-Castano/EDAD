@@ -8,7 +8,7 @@ namespace Persistence
 {
     public class RepositorioHistoriasClinicas
     {
-        public static IHistoriaClinica GetPaciente(int idPaciente)
+        public static IHistoriaClinica GetPaciente(int idPaciente) 
         {
             List<HistoriaClinica> historias;
 
@@ -24,5 +24,6 @@ namespace Persistence
             return historia;
 
         }
+
     }
 }

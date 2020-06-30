@@ -8,7 +8,7 @@ namespace FakeDB
     {
         private static readonly List<AtributosHistoria> pacientes = new List<AtributosHistoria>();
 
-        class AtributosHistoria:Usuario
+        class AtributosHistoria
         {
 
             public int Cedula { get; set; }

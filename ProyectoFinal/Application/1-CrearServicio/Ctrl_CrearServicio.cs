@@ -6,9 +6,9 @@ using Persistence;
 
 namespace Application._1_CrearServicio
 {
-    class Ctrl_CrearServicio
+    public class Ctrl_CrearServicio
     {
-        public String verificarCodigo(String codigoServicio)
+        public String verificarCodigo(String codigoServicio) 
         {
             try
             {
