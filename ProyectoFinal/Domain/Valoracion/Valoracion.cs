@@ -4,7 +4,10 @@ using System.Text;
 
 namespace Domain.Valoracion
 {
-    class Valoracion
+    class Valoracion: IValoracion
     {
+
+        public string estadoValoracion { get; set; }
+        public int cedula { get; set; }
     }
 }
