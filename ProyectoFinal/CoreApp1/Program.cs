@@ -1,5 +1,7 @@
 ﻿using Application._1_CrearServicio;
+using Application._2_RegistrarPaciente;
 using Domain.Servicio;
+using Domain.Usuario.Paciente;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using Persistence;
 using System;
@@ -12,39 +14,25 @@ namespace CoreApp1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
 
-            int i = 0;
-            string fecha = "23-09-1958";
-            string telefono = "312215416j";
-
-            string fechaF = fecha.Substring(6);
-
-            int fechaCorrecta = int.Parse(fechaF);
-
-            bool result = int.TryParse(telefono, out i);
+            string telefono = "32257";
+            string fecha = "01-01-1960";
 
 
+            Ctrl_RegistrarPaciente ctrlC = new Ctrl_RegistrarPaciente();
 
-
-
-
-
-
-            if (!(telefono.Length == 10 || result == true))
+            try
             {
+                ctrlC.verificarDatos(telefono, fecha);
+            }
 
-                Console.WriteLine("telefono malo");
+            catch (DatosNoValidosException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
 
-            }
-            else
-            {
-                Console.WriteLine("telefono bueno");
-            }
-            if (fechaCorrecta > 1960)
-            {
-                Console.WriteLine("fecha mala");
-            }
+
+
 
         }
     }

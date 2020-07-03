@@ -36,32 +36,37 @@ namespace Services.Controllers
 
             List<PacienteAfiliado> pacienteAfiliado = new List<PacienteAfiliado>();
 
-            try
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
+                try
                 {
-
-                    if (ctrlC.verificarCedula(pacienteA.Cedula) == false && ctrlC.verificarDatos(pacienteA.Telefono, pacienteA.FechaNacimiento)==true)
+                    if (ctrlC.verificarCedula(pacienteA.Cedula) == false)
                     {
-                        
-                            pacienteAfiliado.Add(pacienteA);
-                        
+                        pacienteAfiliado.Add(pacienteA);
                     }
-
-                    return new CreatedAtRouteResult("Nuevo paciente regitrado con éxito", new { pacienteA });
                 }
-            }
-            catch (CedulaYaExisteException ex)
-            {
-                return BadRequest(ex.Message);
-            }
-            catch (DatosNoValidosException ex)
-            {
-                return BadRequest(ex.Message);
+
+                catch (CedulaYaExisteException ex)
+                {
+                    return BadRequest(ex.Message);
+                }
+
+                try
+                {
+                    ctrlC.verificarDatos(pacienteA.Telefono, pacienteA.FechaNacimiento); 
+                }
+
+                catch (DatosNoValidosException ex)
+                {
+                    return BadRequest(ex.Message);
+                }
+
+                return new CreatedAtRouteResult("Nuevo paciente regitrado con éxito", new { pacienteA });
+
             }
 
             return BadRequest(ModelState);
-
+            
         }
     }
 }

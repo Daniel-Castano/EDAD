@@ -15,6 +15,7 @@ namespace FakeDB
             public string Telefono { get; set; }
             public string FechaNacimiento { get; set; }
             public string Direccion { get; set; }
+            public string actividadesRegulares { get; set; }
            
 
 
@@ -34,7 +35,7 @@ namespace FakeDB
 
                 Direccion = "direccion" + id;
 
-               
+                actividadesRegulares = "actividad1, actividad2, actividad3";
              
             }
 

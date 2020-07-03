@@ -32,24 +32,17 @@ namespace Application._2_RegistrarPaciente
 
         public bool verificarDatos(string telefono, string fecha)
         {
+            fecha = fecha.Substring(6);
+            int fechaComprobar = int.Parse(fecha);  
 
-            
-            string fechaF = fecha.Substring(6);
-
-            int fechaCorrecta = int.Parse(fechaF);
-
-          
-
-            if (telefono.Length != 10)
+            if (telefono.Length != 10 || !(double.TryParse(telefono, out double i)))
             {
-                return false;
                 throw new DatosNoValidosException("El teléfono ingresado no es válido");
-                
             }
-            if (fechaCorrecta > 1960)
+
+            if (fechaComprobar > 1960)
             {
-                return false;
-                throw new DatosNoValidosException("El paciente no puede acceder a los servicios, debe ser mayor a 59 años");
+                throw new DatosNoValidosException("El paciente no puede acceder a los servicios, debe tener más de 59 años");
             }
             return true;
         }
