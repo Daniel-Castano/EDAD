@@ -12,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using FakeDB;
 using Microsoft.EntityFrameworkCore;
+using Domain.Servicio;
 
 namespace Services
 {
@@ -32,7 +33,7 @@ namespace Services
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ServiceDBContext context)
         {
             if (env.IsDevelopment())
             {
@@ -49,6 +50,50 @@ namespace Services
             {
                 endpoints.MapControllers();
             });
+
+            if (!context.Servicios.Any())
+            {
+                context.Servicios.AddRange(new List<Servicio>()
+                {
+                    new Servicio()
+                    {
+                        codigoServicio= 20,
+                        nombreServicio= "NombreServicio20",
+                        descripcion= "DescripcionServicio20"
+                    },
+                    new Servicio()
+                    {
+                        codigoServicio= 21,
+                        nombreServicio= "NombreServicio21",
+                        descripcion= "DescripcionServicio21"
+                    },
+                    new Servicio()
+                    {
+                        codigoServicio= 22,
+                        nombreServicio= "NombreServicio22",
+                        descripcion= "DescripcionServicio22"
+                    },
+                    new Servicio()
+                    {
+                        codigoServicio= 23,
+                        nombreServicio= "NombreServicio23",
+                        descripcion= "DescripcionServicio23"
+                    },
+                    new Servicio()
+                    {
+                        codigoServicio= 24,
+                        nombreServicio= "NombreServicio24",
+                        descripcion= "DescripcionServicio24"
+                    },
+                    new Servicio()
+                    {
+                        codigoServicio= 25,
+                        nombreServicio= "NombreServicio25",
+                        descripcion= "DescripcionServicio25"
+                    }
+                });
+                context.SaveChanges();
+            }
 
            
         }

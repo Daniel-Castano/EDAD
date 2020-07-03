@@ -1,4 +1,5 @@
 ﻿using Application._5_ConsultarHistoriaClinica;
+using Domain.HistoriaClinica;
 using Domain.Usuario.Paciente;
 using Persistence;
 using System;
@@ -9,32 +10,47 @@ namespace Application._4_ValorarPaciente
 {
     public class Ctrl_ValorarPaciente
     {
-        public String verificarCedula(String cedulaPaciente)
+        public bool verificarCedula(int? cedulaPaciente)
         {
             try
             {
-                if (cedulaPaciente is null)
-
-                    return "{null}";
-
-                IPaciente paciente = RepositorioPacientes.GetPaciente(int.Parse(cedulaPaciente));
-                //solicitarHistoriaClinica(cedulaPaciente);
-                return System.Text.Json.JsonSerializer.Serialize(paciente);
-
-               
+                if (cedulaPaciente == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    IPaciente paciente = RepositorioPacientes.ObtenerCedula(cedulaPaciente);
+                    return true;
+                }
             }
-            catch (PacienteNoAfiliadoException ex)
+            catch (CedulaYaExisteException ex)
             {
                 throw ex;
             }
 
         }
 
-        public String solicitarHistoriaClinica(string cedula)
+        public bool solicitarHistoriaClinica(int? cedula) 
         {
-            Ctrl_ConsultarHistoriaClinica ctr1 = new Ctrl_ConsultarHistoriaClinica();
-
-            return ctr1.solicitarHistoriaClinica(cedula);
+            try
+            {
+                if (cedula == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    IHistoriaClinica historia = RepositorioHistoriasClinicas.GetPaciente(cedula.GetValueOrDefault());
+                    return true;
+                }
+            }
+            catch (HistoriaClinicaNoDisponibleException ex)
+            {
+                throw ex;
+            }
         }
+
+      
     }
 }

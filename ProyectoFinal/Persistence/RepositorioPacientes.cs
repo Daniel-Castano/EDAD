@@ -13,13 +13,30 @@ namespace Persistence
         {
             List<PacienteAfiliado> pacientes;
 
-            String jsonString = FakeDB.Usuario.ToJSON();
+            String jsonString = FakeDB.DatosPaciente.ToJSON();
             pacientes = System.Text.Json.JsonSerializer.Deserialize<List<PacienteAfiliado>>(jsonString);
 
             IPaciente paciente = pacientes.FirstOrDefault(p => p.Cedula == idPaciente);
             if (paciente is null)
             {
-                throw new PacienteNoAfiliadoException("El Paciente con Cédula-->" + idPaciente + ", no esta registrado");
+                throw new CedulaYaExisteException("El Paciente con Cédula-->" + idPaciente + ", ya está registrado en el sistema");
+            }
+
+            return paciente; 
+
+        }
+
+        public static IPaciente ObtenerCedula(int? idPaciente)
+        {
+            List<PacienteAfiliado> pacientes;
+
+            String jsonString = FakeDB.DatosPaciente.ToJSON();
+            pacientes = System.Text.Json.JsonSerializer.Deserialize<List<PacienteAfiliado>>(jsonString);
+
+            IPaciente paciente = pacientes.FirstOrDefault(p => p.Cedula == idPaciente);
+            if (!(paciente is null))
+            {
+                throw new CedulaYaExisteException("El Paciente con Cédula-->" + idPaciente + ", ya está registrado en el sistema");
             }
 
             return paciente;

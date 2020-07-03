@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Domain.Usuario.Paciente
 {
-    class CedulaYaExisteException: Exception
+    public class CedulaYaExisteException: Exception
     {
         public CedulaYaExisteException()
         {

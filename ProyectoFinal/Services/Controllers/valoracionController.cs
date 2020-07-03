@@ -6,6 +6,8 @@ using Application._4_ValorarPaciente;
 using Domain.HistoriaClinica;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Domain.Valoracion;
+using Domain.Usuario.Paciente;
 
 namespace Services.Controllers
 {
@@ -13,21 +15,45 @@ namespace Services.Controllers
     [ApiController]
     public class valoracionController : ControllerBase
     {
+         [HttpPost]
 
-        [HttpGet("{id}")]
+        public IActionResult Post([FromBody] Valoracion valoracionP)
+         {
 
-        public String Get(string id)
-        {
-            Ctrl_ValorarPaciente ctrlC = new Ctrl_ValorarPaciente();
+             Ctrl_ValorarPaciente ctrlC = new Ctrl_ValorarPaciente();
 
-            try
+             List<Valoracion> valoracion = new List<Valoracion>();
+
+             try
+             {
+                 if (ModelState.IsValid)
+                 {
+
+
+                     if (ctrlC.verificarCedula(valoracionP.cedula) == false && ctrlC.solicitarHistoriaClinica(valoracionP.cedula)==true)
+                     {
+                        valoracion.Add(valoracionP);
+                     }
+                     else 
+                    {
+                        valoracion.Clear();
+                    }
+
+
+                     return new CreatedAtRouteResult("La valoración del paciente ha sido creada", new { valoracionP });
+                 }
+             }
+             catch (CedulaYaExisteException ex)
+             {
+                 return BadRequest(ex.Message);
+             }
+            catch(HistoriaClinicaNoDisponibleException ex)
             {
-                return ctrlC.verificarCedula(id);
+                return BadRequest(ex.Message);
             }
-            catch (HistoriaClinicaNoDisponibleException ex)
-            {
-                return "{" + ex.Message + "}";
-            }
-        }
+
+             return BadRequest(ModelState);
+
+         }
     }
 }

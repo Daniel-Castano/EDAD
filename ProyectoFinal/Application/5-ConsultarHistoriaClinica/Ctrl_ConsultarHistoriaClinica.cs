@@ -28,5 +28,7 @@ namespace Application._5_ConsultarHistoriaClinica
             
         }
 
+        
+
     }
 }

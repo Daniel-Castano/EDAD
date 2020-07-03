@@ -10,39 +10,72 @@ using Application._1_CrearServicio;
 
 namespace Services.Controllers
 {
-
+    [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
     public class ServicesController : ControllerBase
     {
+        
         [HttpGet]
 
-        public IEnumerable<Servicio> Get()
-        {
-            List<Servicio> servicios;
+          public IEnumerable<Servicio> Get()
+          {
+              List<Servicio> servicios;
 
-            String jsonString = FakeDB.TablaServicios.ToJSON();
-            servicios = System.Text.Json.JsonSerializer.Deserialize<List<Servicio>>(jsonString);
+              String jsonString = FakeDB.TablaServicios.ToJSON();
+              servicios = System.Text.Json.JsonSerializer.Deserialize<List<Servicio>>(jsonString);
 
-            return servicios.ToList();
-        }
+              return servicios.ToList();
+          }
 
 
-        [HttpGet("{id}")]
+          [HttpGet("{id}")]
 
-        public String Get(string id)
-        {
-            Ctrl_CrearServicio ctrlC = new Ctrl_CrearServicio();
+          public String Get(string id)
+          {
+              Ctrl_CrearServicio ctrlC = new Ctrl_CrearServicio();
 
-            try
-            {
-                return ctrlC.verificarCodigo(id);
-            }
-            catch (ServicioYaExisteException ex)
-            {
-                return "{" + ex.Message + "}";
-            }
-        }
+             
+                  return ctrlC.informacionServicio(id);
+
+          }
+
+          [HttpPost]
+
+          public IActionResult Post([FromBody] Servicio servicio)
+          {
+
+           Ctrl_CrearServicio ctrlC = new Ctrl_CrearServicio();
+
+           List<Servicio> servicios = new List<Servicio>();
+
+            List<TablaServicios> servicios1 = new List<TablaServicios>();
+
+           try
+           {
+               if (ModelState.IsValid)
+               {
+                    
+
+                    if (ctrlC.verificarCodigo(servicio.codigoServicio) == false)
+                    {
+                        servicios.Add(servicio);
+                        
+                    }
+                   
+
+                   return new CreatedAtRouteResult("servicio creado", new { servicio });
+               }
+           }
+           catch(ServicioYaExisteException ex)
+           {
+               return BadRequest(ex.Message);
+           }
+
+           return BadRequest(ModelState);
+
+       }
+
 
 
     }

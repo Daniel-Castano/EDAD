@@ -8,16 +8,30 @@ namespace Application._1_CrearServicio
 {
     public class Ctrl_CrearServicio
     {
-        public String verificarCodigo(String codigoServicio) 
+        public String informacionServicio(String codigoServicio) 
         {
-            try
-            {
+            
                 if (codigoServicio is null)
                     return "{null}";
 
                 IServicio servicio = RepositorioServicios.verificarCodigo(int.Parse(codigoServicio));
-                return System.Text.Json.JsonSerializer.Serialize(servicio);
+                return System.Text.Json.JsonSerializer.Serialize(servicio);   
 
+        }
+        
+        public bool verificarCodigo(int? codigoServicio)
+        {
+            try
+            {
+                if (codigoServicio == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    IServicio servicio = RepositorioServicios.verificarCodigo1((codigoServicio));
+                    return true;
+                }
             }
             catch (ServicioYaExisteException ex)
             {
@@ -25,8 +39,5 @@ namespace Application._1_CrearServicio
             }
 
         }
-
-        
     }
-
 }

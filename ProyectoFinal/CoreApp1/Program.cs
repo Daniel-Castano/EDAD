@@ -1,6 +1,8 @@
-﻿using Domain.Servicio;
+﻿using Application._1_CrearServicio;
+using Domain.Servicio;
 using Persistence;
 using System;
+using System.Collections.Generic;
 
 namespace CoreApp1
 {
@@ -10,7 +12,9 @@ namespace CoreApp1
         {
             Console.WriteLine("Hello World!");
 
-            
+          
+
+
 
         }
     }

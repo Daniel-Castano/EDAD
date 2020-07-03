@@ -11,11 +11,11 @@ namespace FakeDB
         {
             public int Cedula { get; set; }
             public string Nombre { get; set; }
+            public string Apellido { get; set; }
             public string Telefono { get; set; }
             public string FechaNacimiento { get; set; }
             public string Direccion { get; set; }
-            public string Usuario { get; set; }
-            public string Contraseña { get; set; }
+           
 
 
             public AtributosUsuario(int id)
@@ -24,17 +24,17 @@ namespace FakeDB
 
                 Cedula = 1000 +id; 
              
-                Nombre = "NombrePacienteEPS" + id;
+                Nombre = "NombreUsurio" + id;
+
+                Apellido = "ApellidoUsuario" + id;
                
-                Telefono = "Telefono1PacienteEPS" + id;
+                Telefono = "Telefono" + id;
 
                 FechaNacimiento = "30-12-2011";
 
-                Direccion = "direcion pacienteEPS" + id;
+                Direccion = "direccion" + id;
 
-                Usuario = "nombreUsuario";
-
-                Contraseña = "contraseñaUsuario";
+               
              
             }
 
@@ -60,7 +60,7 @@ namespace FakeDB
         {
             if (pacientes.Count == 0)
             {
-                InstanciarPacientes(10);
+                InstanciarPacientes(12);
             }
             var options = new System.Text.Json.JsonSerializerOptions
             {

@@ -7,7 +7,7 @@ namespace Domain.Valoracion
     interface IValoracion
     {
 
-        public string estadoValoracion { get; set; }
         public int cedula { get; set; }
+        public string estadoValoracion { get; set; }
     }
 }

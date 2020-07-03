@@ -21,7 +21,7 @@ namespace Persistence
                 throw new HistoriaClinicaNoDisponibleException("El Paciente con Cédula: " + idPaciente + ", no tiene historia clinica registrada");
             }
 
-            return historia;
+            return historia; 
 
         }
 

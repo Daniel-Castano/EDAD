@@ -18,6 +18,18 @@ namespace Persistence
             servicios = System.Text.Json.JsonSerializer.Deserialize<List<Servicio>>(jsonString);
 
             IServicio servicio = servicios.FirstOrDefault(p => p.codigoServicio == codigoServicio);
+            
+            return servicio;
+        }
+
+        public static IServicio verificarCodigo1(int? codigoServicio) 
+        {
+            List<Servicio> servicios;
+
+            String jsonString = FakeDB.TablaServicios.ToJSON();
+            servicios = System.Text.Json.JsonSerializer.Deserialize<List<Servicio>>(jsonString);
+
+            IServicio servicio = servicios.FirstOrDefault(p => p.codigoServicio == codigoServicio);
             if (!(servicio is null))
             {
                 throw new ServicioYaExisteException("El servicio : " + codigoServicio + ", ya está registrado");
@@ -27,7 +39,8 @@ namespace Persistence
 
         public static List<Servicio> crearServicio(int codigoSer)
         {
-            List<Servicio> servicios=new List<Servicio>();
+            List<Servicio> servicios = new List<Servicio>();
+
 
             string nombreServicio = "NombreServicio" + codigoSer;
             string descripcion = "DescripcionServicio" + codigoSer;
@@ -36,9 +49,18 @@ namespace Persistence
 
             servicios.Add(servicio1);
 
+            foreach (Servicio servicioD in servicios)
+            {
+                Console.WriteLine(servicioD);
+            }
+
             return servicios;
+
+           
         }
 
         
     }
+
+    
 }
