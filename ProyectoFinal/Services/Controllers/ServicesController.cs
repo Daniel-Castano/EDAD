@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Domain.Servicio;
 using Application._1_CrearServicio;
+using javax.smartcardio;
+using static FakeDB.TablaServicios;
 
 namespace Services.Controllers
 {
@@ -51,6 +53,8 @@ namespace Services.Controllers
 
             List<TablaServicios> servicios1 = new List<TablaServicios>();
 
+           List<AtributosServicio> serv = new List<AtributosServicio>();
+
            try
            {
                if (ModelState.IsValid)
@@ -59,7 +63,9 @@ namespace Services.Controllers
 
                     if (ctrlC.verificarCodigo(servicio.codigoServicio) == false)
                     {
+
                         servicios.Add(servicio);
+                        serv.Add(new AtributosServicio(servicio.codigoServicio) { codigoServicio=servicio.codigoServicio, nombreServicio=servicio.nombreServicio, descripcion=servicio.descripcion});
                         
                     }
                    

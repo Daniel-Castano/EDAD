@@ -30,7 +30,7 @@ namespace FakeDB
                
                 Telefono = "Telefono" + id;
 
-                FechaNacimiento = "30-12-2011";
+                FechaNacimiento = "30-12-1959";
 
                 Direccion = "direccion" + id;
 

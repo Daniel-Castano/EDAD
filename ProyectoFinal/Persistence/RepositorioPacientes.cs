@@ -13,7 +13,7 @@ namespace Persistence
         {
             List<PacienteAfiliado> pacientes;
 
-            String jsonString = FakeDB.DatosPaciente.ToJSON();
+            String jsonString = FakeDB.Usuario.ToJSON();
             pacientes = System.Text.Json.JsonSerializer.Deserialize<List<PacienteAfiliado>>(jsonString);
 
             IPaciente paciente = pacientes.FirstOrDefault(p => p.Cedula == idPaciente);
@@ -30,7 +30,7 @@ namespace Persistence
         {
             List<PacienteAfiliado> pacientes;
 
-            String jsonString = FakeDB.DatosPaciente.ToJSON();
+            String jsonString = FakeDB.Usuario.ToJSON();
             pacientes = System.Text.Json.JsonSerializer.Deserialize<List<PacienteAfiliado>>(jsonString);
 
             IPaciente paciente = pacientes.FirstOrDefault(p => p.Cedula == idPaciente);
@@ -42,5 +42,7 @@ namespace Persistence
             return paciente;
 
         }
+
+        
     }
 }

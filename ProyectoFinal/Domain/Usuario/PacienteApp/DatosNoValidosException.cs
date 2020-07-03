@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Domain.Usuario.Paciente
 {
-    class DatosNoValidosException: Exception
+    public class DatosNoValidosException: Exception
     {
         public DatosNoValidosException()
         {

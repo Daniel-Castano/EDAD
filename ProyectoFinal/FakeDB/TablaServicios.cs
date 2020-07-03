@@ -8,7 +8,7 @@ namespace FakeDB
     {
         private static List<AtributosServicio> servicio = new List<AtributosServicio>();
 
-        public class AtributosServicio 
+        public  class AtributosServicio 
         {
             public int codigoServicio { get; set; }
             public string nombreServicio { get; set; }
